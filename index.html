@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick van Oosten | Business Central Consultant</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Rick van Oosten - Business Central Consultant. Turning business chaos into streamlined processes.">
+    <meta name="keywords" content="Business Central, Consultant, Microsoft Dynamics 365, ERP, Rick van Oosten">
+    <meta name="author" content="Rick van Oosten">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rickvanoosten.nl/">
+    <meta property="og:title" content="Rick van Oosten | Business Central Consultant">
+    <meta property="og:description" content="Business Central Consultant - Turning business chaos into streamlined processes.">
+    <meta property="og:image" content="https://rickvanoosten.nl/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rick van Oosten | Business Central Consultant">
+    <meta name="twitter:description" content="Business Central Consultant - Turning business chaos into streamlined processes.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0f' width='100' height='100' rx='20'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='%23667eea' font-family='monospace' font-weight='bold'>R</text></svg>">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0a0a0f">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://rickvanoosten.nl/">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0a0a0f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+
+        /* Animated grid background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(102, 126, 234, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: float 15s infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-100vh) scale(1); }
+        }
+
+        /* Main content */
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        /* Terminal window */
+        .terminal {
+            background: rgba(10, 10, 15, 0.9);
+            border: 1px solid #667eea;
+            border-radius: 8px;
+            padding: 30px 50px;
+            box-shadow:
+                0 0 20px rgba(102, 126, 234, 0.2),
+                inset 0 0 60px rgba(102, 126, 234, 0.05);
+            animation: terminalGlow 3s ease-in-out infinite alternate;
+            width: 500px;
+            max-width: calc(100vw - 40px);
+        }
+
+        @keyframes terminalGlow {
+            0% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.2), inset 0 0 60px rgba(102, 126, 234, 0.05); }
+            100% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.3), inset 0 0 80px rgba(102, 126, 234, 0.08); }
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .terminal-btn:nth-child(1) { background: #ff5f56; animation-delay: 0s; }
+        .terminal-btn:nth-child(2) { background: #ffbd2e; animation-delay: 0.2s; }
+        .terminal-btn:nth-child(3) { background: #27ca40; animation-delay: 0.4s; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Name with glitch effect */
+        .name {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            animation: textFlicker 4s infinite, gradientShift 8s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .name::before,
+        .name::after {
+            content: 'Rick van Oosten';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: none;
+            -webkit-text-fill-color: initial;
+        }
+
+        .name::before {
+            color: #667eea;
+            animation: glitch1 2s infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+            opacity: 0.8;
+        }
+
+        .name::after {
+            color: #f093fb;
+            animation: glitch2 2s infinite;
+            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+            opacity: 0.8;
+        }
+
+        @keyframes glitch1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+
+        @keyframes glitch2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(2px, -2px); }
+            40% { transform: translate(-2px, 2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(-2px, -2px); }
+        }
+
+        @keyframes textFlicker {
+            0%, 100% { opacity: 1; }
+            92% { opacity: 1; }
+            93% { opacity: 0.8; }
+            94% { opacity: 1; }
+            95% { opacity: 0.9; }
+            96% { opacity: 1; }
+        }
+
+        /* Typing effect */
+        .tagline {
+            color: #666;
+            margin-top: 20px;
+            font-size: clamp(0.75rem, 2.5vw, 1rem);
+            overflow: hidden;
+            min-height: 1.5em;
+            white-space: nowrap;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 540px) {
+            .terminal {
+                padding: 20px 25px;
+            }
+
+            .tagline {
+                white-space: normal;
+                min-height: 3em;
+            }
+
+            .links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .boot-text {
+                font-size: 12px;
+                padding: 0 20px;
+            }
+
+            .progress-bar {
+                width: 250px;
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 360px) {
+            .terminal {
+                padding: 15px 20px;
+            }
+
+            .name {
+                font-size: 1.5rem;
+            }
+
+            .terminal-btn {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        /* Accessibility: Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .loader {
+                display: none;
+            }
+        }
+
+        .tagline span {
+            display: inline-block;
+            opacity: 0;
+            animation: typeIn 0.1s forwards;
+        }
+
+        @keyframes typeIn {
+            to { opacity: 1; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: #667eea;
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Binary rain columns */
+        .binary-column {
+            position: fixed;
+            top: -100%;
+            font-size: 14px;
+            color: #667eea;
+            opacity: 0.1;
+            writing-mode: vertical-rl;
+            animation: rain 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rain {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(200vh); }
+        }
+
+        /* Scan line effect */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                transparent 50%,
+                rgba(0, 0, 0, 0.05) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .scanline::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(
+                transparent,
+                rgba(102, 126, 234, 0.03),
+                transparent
+            );
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: -100px; }
+            100% { top: 100%; }
+        }
+
+        /* Links */
+        .links {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .link {
+            color: #667eea;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid transparent;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .link::before {
+            content: '>';
+            margin-right: 8px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .link:hover::before {
+            opacity: 1;
+        }
+
+        .link:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            text-shadow: 0 0 10px #667eea;
+        }
+
+        .link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        .link:hover::after {
+            width: 100%;
+        }
+
+        /* Loading screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0f;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .boot-text {
+            color: #667eea;
+            font-size: 14px;
+            text-align: left;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        .boot-line {
+            opacity: 0;
+            animation: bootIn 0.1s forwards;
+        }
+
+        @keyframes bootIn {
+            to { opacity: 1; }
+        }
+
+        .boot-line.success { color: #27ca40; }
+        .boot-line.info { color: #667eea; }
+        .boot-line.highlight { color: #f093fb; }
+
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: #1a1a2e;
+            border-radius: 2px;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            width: 0%;
+            animation: loadProgress 2.5s ease-out forwards;
+            background-size: 200% 100%;
+            animation: loadProgress 2.5s ease-out forwards, shimmer 1s infinite;
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            20% { width: 20%; }
+            50% { width: 60%; }
+            80% { width: 85%; }
+            100% { width: 100%; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+    <!-- Noscript fallback -->
+    <noscript>
+        <style>
+            .loader { display: none !important; }
+            .tagline { min-height: auto; }
+            #typed::after { content: 'Business Central Consultant'; }
+            .cursor { display: none; }
+            .particles, .binary { display: none; }
+        </style>
+    </noscript>
+</head>
+<body>
+    <!-- Loading screen -->
+    <div class="loader" id="loader">
+        <div class="boot-text" id="bootText"></div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+
+    <div class="grid-bg"></div>
+    <div class="scanline"></div>
+
+    <div class="particles" id="particles"></div>
+    <div class="binary" id="binary"></div>
+
+    <div class="container">
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-btn"></div>
+                <div class="terminal-btn"></div>
+                <div class="terminal-btn"></div>
+            </div>
+
+            <h1 class="name">Rick van Oosten</h1>
+
+            <p class="tagline">
+                <span id="typed"></span><span class="cursor"></span>
+            </p>
+
+            <div class="links">
+                <a href="https://linkedin.com/in/rickvanoosten/" class="link">LinkedIn</a>
+                <a href="mailto:contact@rickvanoosten.nl" class="link">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Boot sequence
+        const bootMessages = [
+            { text: 'BIOS v4.2.0 - System Boot', class: 'info', delay: 0 },
+            { text: 'Checking system memory... OK', class: 'success', delay: 200 },
+            { text: 'Loading coffee.dll... OK', class: 'success', delay: 400 },
+            { text: 'Initializing Business Central modules...', class: 'info', delay: 600 },
+            { text: '> ERP_Core............... loaded', class: 'success', delay: 800 },
+            { text: '> Client_Solutions....... loaded', class: 'success', delay: 1000 },
+            { text: '> Process_Optimizer...... loaded', class: 'success', delay: 1200 },
+            { text: 'Establishing connection to rickvanoosten.nl', class: 'info', delay: 1400 },
+            { text: 'Connection established. Welcome!', class: 'highlight', delay: 1800 },
+        ];
+
+        const bootText = document.getElementById('bootText');
+        const loader = document.getElementById('loader');
+
+        bootMessages.forEach((msg, index) => {
+            setTimeout(() => {
+                const line = document.createElement('div');
+                line.className = `boot-line ${msg.class}`;
+                line.textContent = msg.text;
+                line.style.animationDelay = '0s';
+                bootText.appendChild(line);
+            }, msg.delay);
+        });
+
+        // Hide loader after boot sequence
+        setTimeout(() => {
+            loader.classList.add('hidden');
+        }, 2800);
+
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Create binary rain
+        const binaryContainer = document.getElementById('binary');
+        for (let i = 0; i < 15; i++) {
+            const column = document.createElement('div');
+            column.className = 'binary-column';
+            column.style.left = (i * 7) + '%';
+            column.style.animationDelay = Math.random() * 10 + 's';
+            column.style.animationDuration = (8 + Math.random() * 8) + 's';
+
+            let binary = '';
+            for (let j = 0; j < 50; j++) {
+                binary += Math.random() > 0.5 ? '1' : '0';
+            }
+            column.textContent = binary;
+            binaryContainer.appendChild(column);
+        }
+
+        // Typing effect
+        const taglines = [
+            '> SELECT * FROM Solutions WHERE client = "happy"',
+            '> Business Central Consultant',
+            '> Turning business chaos into streamlined processes',
+            '> DEBUG: Coffee level low... refilling',
+            '> PROCEDURE OptimizeYourBusiness()',
+            '> // TODO: Automate everything'
+        ];
+
+        const typedElement = document.getElementById('typed');
+        let taglineIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentTagline = taglines[taglineIndex];
+
+            if (isDeleting) {
+                typedElement.textContent = currentTagline.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedElement.textContent = currentTagline.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 30 : 80;
+
+            if (!isDeleting && charIndex === currentTagline.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                taglineIndex = (taglineIndex + 1) % taglines.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        setTimeout(type, 1000);
+    </script>
+</body>
+</html>
