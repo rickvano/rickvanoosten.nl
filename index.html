@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rick van Oosten | Business Central Consultant</title>
+    <title>Rick van Oosten | Ondernemer & Consultant</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Rick van Oosten - Business Central Consultant. Turning business chaos into streamlined processes.">
-    <meta name="keywords" content="Business Central, Consultant, Microsoft Dynamics 365, ERP, Rick van Oosten">
+    <meta name="description" content="Rick van Oosten - Ondernemer, Eigenaar van Van Oosten Advies B.V. & Van Oosten Holding B.V. Expert in PMO, IT, ERP & Finance.">
+    <meta name="keywords" content="Van Oosten Advies, Van Oosten Holding, Ondernemer, PMO, IT, ERP, Finance, Business Central, Consultant, Microsoft Dynamics 365, Rick van Oosten">
     <meta name="author" content="Rick van Oosten">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rickvanoosten.nl/">
-    <meta property="og:title" content="Rick van Oosten | Business Central Consultant">
-    <meta property="og:description" content="Business Central Consultant - Turning business chaos into streamlined processes.">
+    <meta property="og:title" content="Rick van Oosten | Ondernemer & Consultant">
+    <meta property="og:description" content="Ondernemer & Eigenaar van Van Oosten Advies B.V. & Van Oosten Holding B.V. Expert in PMO, IT, ERP & Finance.">
     <meta property="og:image" content="https://rickvanoosten.nl/og-image.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Rick van Oosten | Business Central Consultant">
-    <meta name="twitter:description" content="Business Central Consultant - Turning business chaos into streamlined processes.">
+    <meta name="twitter:title" content="Rick van Oosten | Ondernemer & Consultant">
+    <meta name="twitter:description" content="Ondernemer & Eigenaar van Van Oosten Advies B.V. & Van Oosten Holding B.V. Expert in PMO, IT, ERP & Finance.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0f' width='100' height='100' rx='20'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='%23667eea' font-family='monospace' font-weight='bold'>R</text></svg>">
@@ -31,6 +31,9 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://rickvanoosten.nl/">
+    <link rel="alternate" hreflang="en" href="https://rickvanoosten.com/">
+    <link rel="alternate" hreflang="nl" href="https://rickvanoosten.nl/">
+    <link rel="alternate" hreflang="x-default" href="https://rickvanoosten.com/">
 
     <style>
         * {
@@ -112,7 +115,7 @@
                 0 0 20px rgba(102, 126, 234, 0.2),
                 inset 0 0 60px rgba(102, 126, 234, 0.05);
             animation: terminalGlow 3s ease-in-out infinite alternate;
-            width: 500px;
+            width: 580px;
             max-width: calc(100vw - 40px);
         }
 
@@ -212,6 +215,15 @@
             94% { opacity: 1; }
             95% { opacity: 0.9; }
             96% { opacity: 1; }
+        }
+
+        /* Subtitle */
+        .subtitle {
+            color: #8a8aaf;
+            margin-top: 8px;
+            font-size: clamp(0.65rem, 2vw, 0.85rem);
+            letter-spacing: 1px;
+            opacity: 0.8;
         }
 
         /* Typing effect */
@@ -462,9 +474,8 @@
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-            width: 0%;
-            animation: loadProgress 2.5s ease-out forwards;
             background-size: 200% 100%;
+            width: 0%;
             animation: loadProgress 2.5s ease-out forwards, shimmer 1s infinite;
         }
 
@@ -486,7 +497,7 @@
         <style>
             .loader { display: none !important; }
             .tagline { min-height: auto; }
-            #typed::after { content: 'Business Central Consultant'; }
+            #typed::after { content: 'Ondernemer | PMO · IT · ERP · Finance'; }
             .cursor { display: none; }
             .particles, .binary { display: none; }
         </style>
@@ -516,6 +527,7 @@
             </div>
 
             <h1 class="name">Rick van Oosten</h1>
+            <p class="subtitle">Van Oosten Advies B.V. | Van Oosten Holding B.V.</p>
 
             <p class="tagline">
                 <span id="typed"></span><span class="cursor"></span>
@@ -531,15 +543,16 @@
     <script>
         // Boot sequence
         const bootMessages = [
-            { text: 'BIOS v4.2.0 - System Boot', class: 'info', delay: 0 },
-            { text: 'Checking system memory... OK', class: 'success', delay: 200 },
-            { text: 'Loading coffee.dll... OK', class: 'success', delay: 400 },
-            { text: 'Initializing Business Central modules...', class: 'info', delay: 600 },
-            { text: '> ERP_Core............... loaded', class: 'success', delay: 800 },
-            { text: '> Client_Solutions....... loaded', class: 'success', delay: 1000 },
-            { text: '> Process_Optimizer...... loaded', class: 'success', delay: 1200 },
-            { text: 'Establishing connection to rickvanoosten.nl', class: 'info', delay: 1400 },
-            { text: 'Connection established. Welcome!', class: 'highlight', delay: 1800 },
+            { text: 'BIOS v4.2.0 - Systeem Opstart', class: 'info', delay: 0 },
+            { text: 'Systeemgeheugen controleren... OK', class: 'success', delay: 200 },
+            { text: 'Laden van koffie.dll... OK', class: 'success', delay: 400 },
+            { text: 'Van Oosten modules initialiseren...', class: 'info', delay: 600 },
+            { text: '> PMO_Engine............. geladen', class: 'success', delay: 800 },
+            { text: '> IT_Infrastructure..... geladen', class: 'success', delay: 1000 },
+            { text: '> ERP_Systems........... geladen', class: 'success', delay: 1200 },
+            { text: '> Finance_Core.......... geladen', class: 'success', delay: 1400 },
+            { text: 'Verbinding maken met rickvanoosten.nl', class: 'info', delay: 1600 },
+            { text: 'Verbinding gemaakt. Welkom!', class: 'highlight', delay: 2000 },
         ];
 
         const bootText = document.getElementById('bootText');
@@ -558,7 +571,7 @@
         // Hide loader after boot sequence
         setTimeout(() => {
             loader.classList.add('hidden');
-        }, 2800);
+        }, 3000);
 
         // Create floating particles
         const particlesContainer = document.getElementById('particles');
@@ -590,12 +603,13 @@
 
         // Typing effect
         const taglines = [
-            '> SELECT * FROM Solutions WHERE client = "happy"',
-            '> Business Central Consultant',
-            '> Turning business chaos into streamlined processes',
-            '> DEBUG: Coffee level low... refilling',
-            '> PROCEDURE OptimizeYourBusiness()',
-            '> // TODO: Automate everything'
+            '> Ondernemer | PMO · IT · ERP · Finance',
+            '> Eigenaar van Van Oosten Advies B.V.',
+            '> Van bedrijfschaos naar gestroomlijnde processen',
+            '> DEBUG: Koffieniveau laag... bijvullen',
+            '> PROCEDURE OptimaliseerJouwBedrijf()',
+            '> SELECT * FROM Oplossingen WHERE klant = "tevreden"',
+            '> // TODO: Alles automatiseren'
         ];
 
         const typedElement = document.getElementById('typed');
