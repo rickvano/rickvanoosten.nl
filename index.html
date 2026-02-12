@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rick van Oosten | Ondernemer & Consultant</title>
+    <title>Rick van Oosten | Business Central Consultant</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Rick van Oosten - Ondernemer, Eigenaar van Van Oosten Advies B.V. & Van Oosten Holding B.V. Expert in PMO, IT, ERP & Finance.">
-    <meta name="keywords" content="Van Oosten Advies, Van Oosten Holding, Ondernemer, PMO, IT, ERP, Finance, Business Central, Consultant, Microsoft Dynamics 365, Rick van Oosten">
+    <meta name="description" content="Rick van Oosten - Business Central Consultant. Van bedrijfschaos naar gestroomlijnde processen.">
+    <meta name="keywords" content="Business Central, Consultant, Microsoft Dynamics 365, ERP, Rick van Oosten, implementatie, bedrijfsprocessen">
     <meta name="author" content="Rick van Oosten">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rickvanoosten.nl/">
-    <meta property="og:title" content="Rick van Oosten | Ondernemer & Consultant">
-    <meta property="og:description" content="Ondernemer & Eigenaar van Van Oosten Advies B.V. & Van Oosten Holding B.V. Expert in PMO, IT, ERP & Finance.">
+    <meta property="og:title" content="Rick van Oosten | Business Central Consultant">
+    <meta property="og:description" content="Business Central Consultant - Van bedrijfschaos naar gestroomlijnde processen.">
     <meta property="og:image" content="https://rickvanoosten.nl/og-image.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Rick van Oosten | Ondernemer & Consultant">
-    <meta name="twitter:description" content="Ondernemer & Eigenaar van Van Oosten Advies B.V. & Van Oosten Holding B.V. Expert in PMO, IT, ERP & Finance.">
+    <meta name="twitter:title" content="Rick van Oosten | Business Central Consultant">
+    <meta name="twitter:description" content="Business Central Consultant - Van bedrijfschaos naar gestroomlijnde processen.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0f' width='100' height='100' rx='20'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='%23667eea' font-family='monospace' font-weight='bold'>R</text></svg>">
@@ -31,11 +31,20 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://rickvanoosten.nl/">
-    <link rel="alternate" hreflang="en" href="https://rickvanoosten.com/">
-    <link rel="alternate" hreflang="nl" href="https://rickvanoosten.nl/">
-    <link rel="alternate" hreflang="x-default" href="https://rickvanoosten.com/">
 
     <style>
+        /* ── CSS Custom Properties ── */
+        :root {
+            --accent: #667eea;
+            --accent-pink: #f093fb;
+            --accent-purple: #764ba2;
+            --bg: #0a0a0f;
+            --bg-terminal: rgba(10, 10, 15, 0.9);
+            --green: #27ca40;
+            --yellow: #ffbd2e;
+            --red: #ff5f56;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -44,7 +53,7 @@
 
         body {
             min-height: 100vh;
-            background: #0a0a0f;
+            background: var(--bg);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -52,17 +61,15 @@
             overflow: hidden;
         }
 
-        /* Animated grid background */
+        /* ── Animated grid background ── */
         .grid-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background-image:
                 linear-gradient(rgba(102, 126, 234, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
+            will-change: transform;
             animation: gridMove 20s linear infinite;
         }
 
@@ -71,24 +78,23 @@
             100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
         }
 
-        /* Floating particles */
+        /* ── Floating particles ── */
         .particles {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             pointer-events: none;
+            contain: strict;
         }
 
         .particle {
             position: absolute;
             width: 2px;
             height: 2px;
-            background: #667eea;
+            background: var(--accent);
             border-radius: 50%;
-            animation: float 15s infinite;
             opacity: 0;
+            will-change: transform, opacity;
+            animation: float 15s infinite;
         }
 
         @keyframes float {
@@ -98,24 +104,72 @@
             100% { opacity: 0; transform: translateY(-100vh) scale(1); }
         }
 
-        /* Main content */
+        /* ── Binary rain columns ── */
+        .binary-column {
+            position: fixed;
+            top: -100%;
+            font-size: 14px;
+            color: var(--accent);
+            opacity: 0.1;
+            writing-mode: vertical-rl;
+            pointer-events: none;
+            will-change: transform;
+            animation: rain 10s linear infinite;
+        }
+
+        @keyframes rain {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(200vh); }
+        }
+
+        /* ── Scan line effect ── */
+        .scanline {
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(
+                transparent 0px,
+                transparent 2px,
+                rgba(0, 0, 0, 0.05) 2px,
+                rgba(0, 0, 0, 0.05) 4px
+            );
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .scanline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, rgba(102, 126, 234, 0.03), transparent);
+            will-change: top;
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: -100px; }
+            100% { top: 100%; }
+        }
+
+        /* ── Main content ── */
         .container {
             position: relative;
             z-index: 10;
             text-align: center;
         }
 
-        /* Terminal window */
+        /* ── Terminal window ── */
         .terminal {
-            background: rgba(10, 10, 15, 0.9);
-            border: 1px solid #667eea;
+            background: var(--bg-terminal);
+            border: 1px solid var(--accent);
             border-radius: 8px;
             padding: 30px 50px;
             box-shadow:
                 0 0 20px rgba(102, 126, 234, 0.2),
                 inset 0 0 60px rgba(102, 126, 234, 0.05);
             animation: terminalGlow 3s ease-in-out infinite alternate;
-            width: 580px;
+            width: 500px;
             max-width: calc(100vw - 40px);
         }
 
@@ -139,26 +193,26 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
-        .terminal-btn:nth-child(1) { background: #ff5f56; animation-delay: 0s; }
-        .terminal-btn:nth-child(2) { background: #ffbd2e; animation-delay: 0.2s; }
-        .terminal-btn:nth-child(3) { background: #27ca40; animation-delay: 0.4s; }
+        .terminal-btn:nth-child(1) { background: var(--red); }
+        .terminal-btn:nth-child(2) { background: var(--yellow); animation-delay: 0.2s; }
+        .terminal-btn:nth-child(3) { background: var(--green); animation-delay: 0.4s; }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
 
-        /* Name with glitch effect */
+        /* ── Name with glitch effect ── */
         .name {
             font-size: clamp(2rem, 8vw, 4rem);
             font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-pink) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             position: relative;
-            animation: textFlicker 4s infinite, gradientShift 8s ease infinite;
             background-size: 200% 200%;
+            animation: textFlicker 4s infinite, gradientShift 8s ease infinite;
         }
 
         @keyframes gradientShift {
@@ -174,22 +228,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: none;
             -webkit-text-fill-color: initial;
+            opacity: 0.8;
         }
 
         .name::before {
-            color: #667eea;
-            animation: glitch1 2s infinite;
+            color: var(--accent);
             clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-            opacity: 0.8;
+            animation: glitch1 2s infinite;
         }
 
         .name::after {
-            color: #f093fb;
-            animation: glitch2 2s infinite;
+            color: var(--accent-pink);
             clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-            opacity: 0.8;
+            animation: glitch2 2s infinite;
         }
 
         @keyframes glitch1 {
@@ -209,106 +261,27 @@
         }
 
         @keyframes textFlicker {
-            0%, 100% { opacity: 1; }
-            92% { opacity: 1; }
+            0%, 92%, 94%, 96%, 100% { opacity: 1; }
             93% { opacity: 0.8; }
-            94% { opacity: 1; }
             95% { opacity: 0.9; }
-            96% { opacity: 1; }
         }
 
-        /* Subtitle */
-        .subtitle {
-            color: #8a8aaf;
-            margin-top: 8px;
-            font-size: clamp(0.65rem, 2vw, 0.85rem);
-            letter-spacing: 1px;
-            opacity: 0.8;
-        }
-
-        /* Typing effect */
+        /* ── Typing effect ── */
         .tagline {
             color: #666;
             margin-top: 20px;
             font-size: clamp(0.75rem, 2.5vw, 1rem);
-            overflow: hidden;
-            min-height: 1.5em;
-            white-space: nowrap;
-        }
-
-        /* Mobile adjustments */
-        @media (max-width: 540px) {
-            .terminal {
-                padding: 20px 25px;
-            }
-
-            .tagline {
-                white-space: normal;
-                min-height: 3em;
-            }
-
-            .links {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .boot-text {
-                font-size: 12px;
-                padding: 0 20px;
-            }
-
-            .progress-bar {
-                width: 250px;
-            }
-        }
-
-        /* Very small screens */
-        @media (max-width: 360px) {
-            .terminal {
-                padding: 15px 20px;
-            }
-
-            .name {
-                font-size: 1.5rem;
-            }
-
-            .terminal-btn {
-                width: 10px;
-                height: 10px;
-            }
-        }
-
-        /* Accessibility: Reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-
-            .loader {
-                display: none;
-            }
-        }
-
-        .tagline span {
-            display: inline-block;
-            opacity: 0;
-            animation: typeIn 0.1s forwards;
-        }
-
-        @keyframes typeIn {
-            to { opacity: 1; }
+            min-height: 3em;
         }
 
         .cursor {
             display: inline-block;
             width: 10px;
             height: 1.2em;
-            background: #667eea;
+            background: var(--accent);
             margin-left: 5px;
-            animation: blink 1s step-end infinite;
             vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
         }
 
         @keyframes blink {
@@ -316,60 +289,7 @@
             50% { opacity: 0; }
         }
 
-        /* Binary rain columns */
-        .binary-column {
-            position: fixed;
-            top: -100%;
-            font-size: 14px;
-            color: #667eea;
-            opacity: 0.1;
-            writing-mode: vertical-rl;
-            animation: rain 10s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes rain {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(200vh); }
-        }
-
-        /* Scan line effect */
-        .scanline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                transparent 50%,
-                rgba(0, 0, 0, 0.05) 50%
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 100;
-        }
-
-        .scanline::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(
-                transparent,
-                rgba(102, 126, 234, 0.03),
-                transparent
-            );
-            animation: scan 8s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { top: -100px; }
-            100% { top: 100%; }
-        }
-
-        /* Links */
+        /* ── Links ── */
         .links {
             margin-top: 30px;
             display: flex;
@@ -378,7 +298,7 @@
         }
 
         .link {
-            color: #667eea;
+            color: var(--accent);
             text-decoration: none;
             padding: 10px 20px;
             border: 1px solid transparent;
@@ -399,9 +319,9 @@
         }
 
         .link:hover {
-            border-color: #667eea;
+            border-color: var(--accent);
             background: rgba(102, 126, 234, 0.1);
-            text-shadow: 0 0 10px #667eea;
+            text-shadow: 0 0 10px var(--accent);
         }
 
         .link::after {
@@ -411,7 +331,7 @@
             left: 0;
             width: 0;
             height: 1px;
-            background: #667eea;
+            background: var(--accent);
             transition: width 0.3s ease;
         }
 
@@ -419,14 +339,11 @@
             width: 100%;
         }
 
-        /* Loading screen */
+        /* ── Loading screen ── */
         .loader {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a0a0f;
+            inset: 0;
+            background: var(--bg);
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -442,7 +359,7 @@
         }
 
         .boot-text {
-            color: #667eea;
+            color: var(--accent);
             font-size: 14px;
             text-align: left;
             max-width: 500px;
@@ -458,9 +375,9 @@
             to { opacity: 1; }
         }
 
-        .boot-line.success { color: #27ca40; }
-        .boot-line.info { color: #667eea; }
-        .boot-line.highlight { color: #f093fb; }
+        .boot-line.success { color: var(--green); }
+        .boot-line.info { color: var(--accent); }
+        .boot-line.highlight { color: var(--accent-pink); }
 
         .progress-bar {
             width: 300px;
@@ -473,10 +390,10 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-pink));
             background-size: 200% 100%;
             width: 0%;
-            animation: loadProgress 2.5s ease-out forwards, shimmer 1s infinite;
+            animation: loadProgress 2.5s ease-out forwards, shimmer 1s linear infinite;
         }
 
         @keyframes loadProgress {
@@ -491,13 +408,62 @@
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
+
+        /* ── Mobile adjustments ── */
+        @media (max-width: 540px) {
+            .terminal {
+                padding: 20px 25px;
+            }
+
+            .links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .boot-text {
+                font-size: 12px;
+                padding: 0 20px;
+            }
+
+            .progress-bar {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .terminal {
+                padding: 15px 20px;
+            }
+
+            .name {
+                font-size: 1.5rem;
+            }
+
+            .terminal-btn {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        /* ── Accessibility: Reduced motion ── */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .loader { display: none; }
+            .particles, .binary { display: none; }
+        }
     </style>
+
     <!-- Noscript fallback -->
     <noscript>
         <style>
             .loader { display: none !important; }
             .tagline { min-height: auto; }
-            #typed::after { content: 'Ondernemer | PMO · IT · ERP · Finance'; }
+            #typed::after { content: 'Business Central Consultant'; }
             .cursor { display: none; }
             .particles, .binary { display: none; }
         </style>
@@ -527,122 +493,121 @@
             </div>
 
             <h1 class="name">Rick van Oosten</h1>
-            <p class="subtitle">Van Oosten Advies B.V. | Van Oosten Holding B.V.</p>
 
             <p class="tagline">
                 <span id="typed"></span><span class="cursor"></span>
             </p>
 
             <div class="links">
-                <a href="https://linkedin.com/in/rickvanoosten/" class="link">LinkedIn</a>
+                <a href="https://linkedin.com/in/rickvanoosten/" class="link" rel="noopener">LinkedIn</a>
                 <a href="mailto:contact@rickvanoosten.nl" class="link">Contact</a>
             </div>
         </div>
     </div>
 
     <script>
-        // Boot sequence
-        const bootMessages = [
-            { text: 'BIOS v4.2.0 - Systeem Opstart', class: 'info', delay: 0 },
-            { text: 'Systeemgeheugen controleren... OK', class: 'success', delay: 200 },
-            { text: 'Laden van koffie.dll... OK', class: 'success', delay: 400 },
-            { text: 'Van Oosten modules initialiseren...', class: 'info', delay: 600 },
-            { text: '> PMO_Engine............. geladen', class: 'success', delay: 800 },
-            { text: '> IT_Infrastructure..... geladen', class: 'success', delay: 1000 },
-            { text: '> ERP_Systems........... geladen', class: 'success', delay: 1200 },
-            { text: '> Finance_Core.......... geladen', class: 'success', delay: 1400 },
-            { text: 'Verbinding maken met rickvanoosten.nl', class: 'info', delay: 1600 },
-            { text: 'Verbinding gemaakt. Welkom!', class: 'highlight', delay: 2000 },
-        ];
+        // ── Boot sequence ──
+        (() => {
+            const bootMessages = [
+                { text: 'BIOS v4.2.0 - Systeem opstarten', cls: 'info', delay: 0 },
+                { text: 'Systeemgeheugen controleren... OK', cls: 'success', delay: 200 },
+                { text: 'Laden van koffie.dll... OK', cls: 'success', delay: 400 },
+                { text: 'Business Central modules initialiseren...', cls: 'info', delay: 600 },
+                { text: '> ERP_Kern............... geladen', cls: 'success', delay: 800 },
+                { text: '> Klant_Oplossingen...... geladen', cls: 'success', delay: 1000 },
+                { text: '> Proces_Optimalisatie... geladen', cls: 'success', delay: 1200 },
+                { text: 'Verbinding maken met rickvanoosten.nl', cls: 'info', delay: 1400 },
+                { text: 'Verbinding gemaakt. Welkom!', cls: 'highlight', delay: 1800 },
+            ];
 
-        const bootText = document.getElementById('bootText');
-        const loader = document.getElementById('loader');
+            const bootText = document.getElementById('bootText');
+            const loader = document.getElementById('loader');
 
-        bootMessages.forEach((msg, index) => {
-            setTimeout(() => {
-                const line = document.createElement('div');
-                line.className = `boot-line ${msg.class}`;
-                line.textContent = msg.text;
-                line.style.animationDelay = '0s';
-                bootText.appendChild(line);
-            }, msg.delay);
-        });
+            bootMessages.forEach(msg => {
+                setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.className = `boot-line ${msg.cls}`;
+                    line.textContent = msg.text;
+                    bootText.appendChild(line);
+                }, msg.delay);
+            });
 
-        // Hide loader after boot sequence
-        setTimeout(() => {
-            loader.classList.add('hidden');
-        }, 3000);
+            setTimeout(() => loader.classList.add('hidden'), 2800);
+        })();
 
-        // Create floating particles
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Create binary rain
-        const binaryContainer = document.getElementById('binary');
-        for (let i = 0; i < 15; i++) {
-            const column = document.createElement('div');
-            column.className = 'binary-column';
-            column.style.left = (i * 7) + '%';
-            column.style.animationDelay = Math.random() * 10 + 's';
-            column.style.animationDuration = (8 + Math.random() * 8) + 's';
-
-            let binary = '';
-            for (let j = 0; j < 50; j++) {
-                binary += Math.random() > 0.5 ? '1' : '0';
+        // ── Create floating particles (batch DOM insert) ──
+        (() => {
+            const frag = document.createDocumentFragment();
+            const count = 30; // Reduced from 50 — visually identical, fewer repaints
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.cssText = `left:${Math.random() * 100}%;animation-delay:${Math.random() * 15}s;animation-duration:${10 + Math.random() * 10}s`;
+                frag.appendChild(p);
             }
-            column.textContent = binary;
-            binaryContainer.appendChild(column);
-        }
+            document.getElementById('particles').appendChild(frag);
+        })();
 
-        // Typing effect
-        const taglines = [
-            '> Ondernemer | PMO · IT · ERP · Finance',
-            '> Eigenaar van Van Oosten Advies B.V.',
-            '> Van bedrijfschaos naar gestroomlijnde processen',
-            '> DEBUG: Koffieniveau laag... bijvullen',
-            '> PROCEDURE OptimaliseerJouwBedrijf()',
-            '> SELECT * FROM Oplossingen WHERE klant = "tevreden"',
-            '> // TODO: Alles automatiseren'
-        ];
+        // ── Create binary rain (batch DOM insert) ──
+        (() => {
+            const frag = document.createDocumentFragment();
+            const cols = 15;
+            for (let i = 0; i < cols; i++) {
+                const col = document.createElement('div');
+                col.className = 'binary-column';
+                col.style.cssText = `left:${i * 7}%;animation-delay:${Math.random() * 10}s;animation-duration:${8 + Math.random() * 8}s`;
+                // Generate binary string efficiently
+                const arr = new Uint8Array(50);
+                crypto.getRandomValues(arr);
+                col.textContent = Array.from(arr, b => b & 1).join('');
+                frag.appendChild(col);
+            }
+            document.getElementById('binary').appendChild(frag);
+        })();
 
-        const typedElement = document.getElementById('typed');
-        let taglineIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+        // ── Typing effect ──
+        (() => {
+            const taglines = [
+                '> SELECT * FROM Oplossingen WHERE klant = "tevreden"',
+                '> Business Central Consultant',
+                '> Van bedrijfschaos naar gestroomlijnde processen',
+                '> DEBUG: Koffieniveau laag... bijvullen',
+                '> PROCEDURE OptimaliseerUwBedrijf()',
+                '> // TODO: Alles automatiseren'
+            ];
 
-        function type() {
-            const currentTagline = taglines[taglineIndex];
+            const el = document.getElementById('typed');
+            let idx = 0;
+            let charIdx = 0;
+            let deleting = false;
 
-            if (isDeleting) {
-                typedElement.textContent = currentTagline.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typedElement.textContent = currentTagline.substring(0, charIndex + 1);
-                charIndex++;
+            function tick() {
+                const current = taglines[idx];
+
+                if (deleting) {
+                    charIdx--;
+                } else {
+                    charIdx++;
+                }
+
+                el.textContent = current.substring(0, charIdx);
+
+                let delay = deleting ? 30 : 80;
+
+                if (!deleting && charIdx === current.length) {
+                    delay = 2000;
+                    deleting = true;
+                } else if (deleting && charIdx === 0) {
+                    deleting = false;
+                    idx = (idx + 1) % taglines.length;
+                    delay = 500;
+                }
+
+                setTimeout(tick, delay);
             }
 
-            let typeSpeed = isDeleting ? 30 : 80;
-
-            if (!isDeleting && charIndex === currentTagline.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                taglineIndex = (taglineIndex + 1) % taglines.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-
-        setTimeout(type, 1000);
+            setTimeout(tick, 1000);
+        })();
     </script>
 </body>
 </html>
